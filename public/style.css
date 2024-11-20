@@ -1,0 +1,32 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+html, body, #app, #home {
+  height: 100%;
+}
+
+#home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  a {
+    text-decoration: none;
+  }
+  button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+  }
+  a, button {
+    color: #aaa;
+    font-size: xx-large;
+    line-height: 1;
+    cursor: pointer;
+    &:hover {
+      color: #000;
+    }
+  }
+}

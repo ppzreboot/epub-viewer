@@ -1,1 +1,8 @@
-console.log('hello epub')
+import { Home } from './home'
+
+main()
+
+async function main() {
+  await Home()
+
+}

@@ -7,7 +7,6 @@ function Viewer(container: HTMLDivElement, files: Unzipped) {
   const meta = parse_meta(files)
   console.log('basic info', meta.basic())
   console.log('epub guide', meta.guide())
-  const toc = parse_toc(files, meta.manifest())
+  const toc = parse_toc(files, meta.manifest(), meta.rootfile_dir)
   console.log('epub toc', toc)
-
 }

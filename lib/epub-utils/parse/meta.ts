@@ -9,6 +9,7 @@ const parse_meta = (epub: I_epub_files): I_epub_meta => {
   const rootfile = parse_xml(epub[rootfile_path])
   const rootfile_dir = join_path(rootfile_path, '../') 
   return {
+    rootfile_dir,
     basic: () => parse_basic(rootfile.querySelector('metadata')!),
     manifest: () => parse_manifest(rootfile.querySelector('manifest')!, rootfile_dir),
     spine: () => parse_spine(rootfile.querySelector('spine')!),

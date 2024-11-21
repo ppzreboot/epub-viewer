@@ -31,6 +31,7 @@ interface I_guides {
 /** information defined in rootfile of epub */
 export
 interface I_epub_meta {
+  rootfile_dir: string
   basic: () => I_basic_meta
   manifest: () => I_manifest_item[]
   spine: () => string[]

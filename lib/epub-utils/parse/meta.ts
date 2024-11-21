@@ -1,4 +1,4 @@
-import { parse_xml, xml_attr } from '../xml'
+import { parse_xml, xml_attr } from '../utils'
 import { I_epub_files, I_epub_meta } from '../types'
 
 export

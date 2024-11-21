@@ -12,7 +12,8 @@ interface I_epub_meta {
   creator?: string
   publisher?: string
   date?: Date
-  manifest: I_manifest[]
+  manifest: () => I_manifest[]
+  spine: () => string[]
 }
 
 export

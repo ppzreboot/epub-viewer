@@ -17,7 +17,8 @@ const parse_meta = (epub: I_epub_files): I_epub_meta => {
       if (date)
         return new Date(date)
     })(),
-    manifest: parse_manifest(rootfile.querySelector('manifest')!),
+    manifest: () => parse_manifest(rootfile.querySelector('manifest')!),
+    spine: () => parse_spine(rootfile.querySelector('spine')!),
   }
 }
 
@@ -26,3 +27,8 @@ const parse_manifest = (el: Element): I_manifest[] =>
     id: xml_attr(item, 'id'),
     href: xml_attr(item, 'href'),
   }))
+
+const parse_spine = (el: Element): string[] =>
+  Array.from(el.children).map(item =>
+    xml_attr(item, 'idref')
+  )

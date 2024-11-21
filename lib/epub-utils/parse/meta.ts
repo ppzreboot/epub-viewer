@@ -1,5 +1,5 @@
 import { parse_xml, xml_attr } from '../utils'
-import { I_basic_meta, I_epub_files, I_epub_meta, I_manifest } from '../types'
+import { I_basic_meta, I_epub_files, I_epub_meta, I_guides, I_manifest } from '../types'
 
 export
 const parse_meta = (epub: I_epub_files): I_epub_meta => {
@@ -10,7 +10,18 @@ const parse_meta = (epub: I_epub_files): I_epub_meta => {
     basic: () => parse_basic(rootfile.querySelector('metadata')!),
     manifest: () => parse_manifest(rootfile.querySelector('manifest')!),
     spine: () => parse_spine(rootfile.querySelector('spine')!),
+    guide: () => parse_guides(rootfile.querySelector('guide')!),
   }
+}
+
+const parse_guides = (el: Element): I_guides => {
+  const guilds: I_guides = {}
+  for (const ref of el.children)
+    guilds[xml_attr(ref, 'type')] = {
+      title: xml_attr(ref, 'title'),
+      href: xml_attr(ref, 'href'),
+    }
+  return guilds
 }
 
 const parse_basic = (el: Element): I_basic_meta => ({

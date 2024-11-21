@@ -1,5 +1,9 @@
 {
   "type": "module",
+  "scripts": {
+    "dev": "node ./build.js dev",
+    "pro": "node ./build.js"
+  },
   "devDependencies": {
     "esbuild": "^0.24.0",
     "typescript": "~5.6.2"

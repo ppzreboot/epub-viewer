@@ -1,27 +1,30 @@
+// @ts-check
 import { build, analyzeMetafile, context } from 'esbuild'
 
-// const ctx = await context({
-//   entryPoints: ['./src/main.ts'],
-//   bundle: true,
-//   metafile: true,
-//   outfile: './public/dist/main.js',
-//   logLevel: 'debug',
-// })
+const is_dev = process.argv[2] === 'dev'
 
-// await ctx.serve({
-//   servedir: 'public'
-// })
-
-const res = await build({
-  entryPoints: ['./src/main.ts'],
-  bundle: true,
-  metafile: true,
-  outfile: './public/dist/main.js',
-  logLevel: 'debug',
-  minify: true,
-  treeShaking: true,
-})
-
-console.log(
-  await analyzeMetafile(res.metafile, { verbose: true })
-)
+if (is_dev) {
+  const ctx = await context({
+    entryPoints: ['./src/main.ts'],
+    bundle: true,
+    outfile: './public/dist/main.js',
+    logLevel: 'debug',
+  })
+  await ctx.watch()
+  await ctx.serve({
+    servedir: 'public'
+  })
+} else {
+  const res = await build({
+    entryPoints: ['./src/main.ts'],
+    bundle: true,
+    outfile: './public/dist/main.js',
+    logLevel: 'debug',
+    metafile: true,
+    minify: true,
+    treeShaking: true,
+  })
+  console.log(
+    await analyzeMetafile(res.metafile, { verbose: true })
+  )
+}

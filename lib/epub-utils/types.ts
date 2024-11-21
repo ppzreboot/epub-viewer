@@ -32,10 +32,10 @@ interface I_guides {
 export
 interface I_epub_meta {
   rootfile_dir: string
-  basic: () => I_basic_meta
-  manifest: () => I_manifest_item[]
-  spine: () => string[]
-  guide: () => I_guides
+  basic: I_basic_meta
+  manifest: I_manifest_item[]
+  spine: string[]
+  guide: I_guides
 }
 
 export
@@ -49,7 +49,13 @@ interface I_nav_point {
 }
 
 export
-interface I_TOC {
+interface I_toc {
   title?: string
   list?: I_nav_point[]
+}
+
+export
+interface I_epub {
+  meta: I_epub_meta
+  toc?: I_toc
 }

@@ -1,11 +1,11 @@
-import { I_manifest_item, I_epub_files, I_TOC, I_nav_point } from '../types'
+import { I_manifest_item, I_epub_files, I_toc, I_nav_point } from '../types'
 import { parse_xml, xml_attr } from '../utils'
 import { join_path } from './path'
 
 export
-const parse_toc = (epub: I_epub_files, manifest: I_manifest_item[], dir: string): null | I_TOC => {
+const parse_toc = (epub: I_epub_files, manifest: I_manifest_item[], dir: string): undefined | I_toc => {
   const toc_path = manifest.find(m => m.id === 'ncx') // NCX: Navigation Control Xml
-  if (!toc_path) return null
+  if (!toc_path) return
 
   const toc = parse_xml(epub[toc_path.href])
   const title = toc.querySelector('docTitle')?.querySelector('text')?.innerHTML

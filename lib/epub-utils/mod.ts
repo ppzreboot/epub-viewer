@@ -1,4 +1,5 @@
 export * from './types'
 export * from './parse/meta'
 export * from './parse/toc'
+export * from './parse/mod'
 export * from './verify/mimetype'

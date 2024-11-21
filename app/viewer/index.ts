@@ -1,12 +1,13 @@
 import type { Unzipped } from 'fflate'
-import { parse_toc, parse_meta } from 'epub-utils'
+import { parse_epub } from 'epub-utils'
 
 export
 function Viewer(container: HTMLDivElement, files: Unzipped) {
   console.debug(files)
-  const meta = parse_meta(files)
-  console.log('basic info', meta.basic())
-  console.log('epub guide', meta.guide())
-  const toc = parse_toc(files, meta.manifest(), meta.rootfile_dir)
-  console.log('epub toc', toc)
+  const now = new Date()
+  const epub = parse_epub(files)
+  console.log(`parsed in ${new Date().getTime() - now.getTime()}ms`)
+  console.log(epub)
+  const iframe = document.createElement('iframe')
+  // iframe.src = 
 }

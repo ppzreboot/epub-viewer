@@ -18,13 +18,13 @@ function Home() {
         }
         file_input.click()
       })
-      // return the decompressed files
+      // decompresse files
       const files = unzipSync(
         new Uint8Array(
           await file.arrayBuffer()
         )
       )
-      // simple validate
+      // simple validate and return files
       if (verify_mimetype(files))
         resolve(files)
       // remove `Home`

@@ -12,5 +12,7 @@ const join_path = (base: string, appender: string) => {
   let bases = base.split('/')
   if (back_num)
     bases = bases.slice(0, -back_num)
-  return [...bases, ...appender.split('/')].join('/')
+  return [...bases, ...appender.split('/')]
+    .filter(item => item)
+    .join('/')
 }

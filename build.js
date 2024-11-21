@@ -5,7 +5,7 @@ const is_dev = process.argv[2] === 'dev'
 
 if (is_dev) {
   const ctx = await context({
-    entryPoints: ['./src/main.ts'],
+    entryPoints: ['./app/main.ts'],
     bundle: true,
     outfile: './public/dist/main.js',
     logLevel: 'debug',
@@ -17,7 +17,7 @@ if (is_dev) {
   })
 } else {
   const res = await build({
-    entryPoints: ['./src/main.ts'],
+    entryPoints: ['./app/main.ts'],
     bundle: true,
     outfile: './public/dist/main.js',
     logLevel: 'debug',

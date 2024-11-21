@@ -1,0 +1,8 @@
+{
+  "name": "epub-utils",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./mod.ts"
+  }
+}

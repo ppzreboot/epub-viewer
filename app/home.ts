@@ -1,5 +1,6 @@
 import { type Unzipped, unzipSync } from 'fflate'
-import { E, Q, read_file } from './common'
+import { E, Q } from './common'
+import { verify_mimetype } from 'epub-utils'
 
 export
 function Home() {
@@ -24,7 +25,7 @@ function Home() {
         )
       )
       // simple validate
-      if (read_file(files.mimetype) === 'application/epub+zip')
+      if (verify_mimetype(files))
         resolve(files)
       // remove `Home`
       Q('home').remove()

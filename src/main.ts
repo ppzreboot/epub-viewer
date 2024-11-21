@@ -3,6 +3,5 @@ import { Home } from './home'
 main()
 
 async function main() {
-  await Home()
-
+  const files = await Home()
 }

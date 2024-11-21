@@ -5,5 +5,5 @@ export
 function Viewer(container: HTMLDivElement, files: Unzipped) {
   console.debug(files)
   const meta = parse_meta(files)
-  console.log({ meta })
+  console.log(meta.basic())
 }

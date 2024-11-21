@@ -5,13 +5,19 @@ interface I_manifest {
   // media_type: string
 }
 
-/** information defined in rootfile of epub */
 export
-interface I_epub_meta {
+interface I_basic_meta {
   title?: string
   creator?: string
   publisher?: string
   date?: Date
+  cover_id?: string
+}
+
+/** information defined in rootfile of epub */
+export
+interface I_epub_meta {
+  basic: () => I_basic_meta
   manifest: () => I_manifest[]
   spine: () => string[]
 }

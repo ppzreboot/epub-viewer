@@ -1,5 +1,5 @@
 export
-interface I_manifest {
+interface I_manifest_item { // manifest 有列表的意思
   id: string
   href: string
   // media_type: string
@@ -32,10 +32,23 @@ interface I_guides {
 export
 interface I_epub_meta {
   basic: () => I_basic_meta
-  manifest: () => I_manifest[]
+  manifest: () => I_manifest_item[]
   spine: () => string[]
   guide: () => I_guides
 }
 
 export
 type I_epub_files = Record<string, Uint8Array>
+
+export
+interface I_nav_point {
+  title: string
+  href: string
+  children: I_nav_point[]
+}
+
+export
+interface I_TOC {
+  title?: string
+  list?: I_nav_point[]
+}

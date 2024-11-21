@@ -1,5 +1,5 @@
 import { parse_xml, xml_attr } from '../utils'
-import { I_basic_meta, I_epub_files, I_epub_meta, I_guides, I_manifest } from '../types'
+import { I_basic_meta, I_epub_files, I_epub_meta, I_guides, I_manifest_item } from '../types'
 
 export
 const parse_meta = (epub: I_epub_files): I_epub_meta => {
@@ -39,7 +39,7 @@ const parse_basic = (el: Element): I_basic_meta => ({
     return meta ? xml_attr(meta, 'content') : undefined
   })(),
 })
-const parse_manifest = (el: Element): I_manifest[] =>
+const parse_manifest = (el: Element): I_manifest_item[] =>
   Array.from(el.children).map(item => ({
     id: xml_attr(item, 'id'),
     href: xml_attr(item, 'href'),

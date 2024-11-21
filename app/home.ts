@@ -6,7 +6,7 @@ export
 function Home() {
   return new Promise<Unzipped>(resolve => {
     Q('local')!.onclick = async () => {
-      // make use select a epub file
+      // make user select a epub file
       const file = await new Promise<File>(res => {
         const file_input = E('input')
         file_input.type = 'file'

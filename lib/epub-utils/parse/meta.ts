@@ -44,7 +44,7 @@ const parse_basic = (el: Element): I_basic_meta => ({
 const parse_manifest = (el: Element, dir: string): I_manifest_item[] =>
   Array.from(el.children).map(item => ({
     id: xml_attr(item, 'id'),
-    href: join_path(xml_attr(item, 'href'), dir),
+    href: join_path(dir, xml_attr(item, 'href')),
   }))
 
 const parse_spine = (el: Element): string[] =>

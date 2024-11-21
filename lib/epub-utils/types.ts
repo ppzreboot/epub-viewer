@@ -6,6 +6,9 @@ interface I_manifest_item { // manifest 有列表的意思
 }
 
 export
+type I_manifest = I_manifest_item[]
+
+export
 interface I_basic_meta {
   title?: string
   creator?: string

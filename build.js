@@ -9,6 +9,7 @@ if (is_dev) {
     bundle: true,
     outfile: './public/dist/main.js',
     logLevel: 'debug',
+    format: 'esm',
   })
   await ctx.watch()
   await ctx.serve({
@@ -20,6 +21,8 @@ if (is_dev) {
     bundle: true,
     outfile: './public/dist/main.js',
     logLevel: 'debug',
+    format: 'esm',
+
     metafile: true,
     minify: true,
     treeShaking: true,

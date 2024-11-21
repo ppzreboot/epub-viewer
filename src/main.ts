@@ -1,7 +1,11 @@
 import { Home } from './home'
+import { Viewer } from './viewer'
+import { Q } from './common'
+import { retrieve_file } from './retrieve'
 
-main()
-
-async function main() {
-  const files = await Home()
-}
+Viewer(
+  Q('app'),
+  (
+    await retrieve_file()
+  ) ?? await Home(),
+)

@@ -1,5 +1,6 @@
 import type { Unzipped } from 'fflate'
-import { parse_epub, make_url_by_id } from 'epub-utils'
+import { parse_epub } from 'epub-utils'
+import { Mess } from './mess'
 
 export
 function Viewer(container: HTMLDivElement, files: Unzipped) {
@@ -14,8 +15,7 @@ function Viewer(container: HTMLDivElement, files: Unzipped) {
 
   setTimeout(() => {
     const iframe = document.createElement('iframe')
-    
-    iframe.src = make_url_by_id(epub.meta.spine[0], epub.meta.manifest, base_url)
+    Mess(iframe, epub, base_url)
     container.appendChild(iframe)
   }, 50)
 }

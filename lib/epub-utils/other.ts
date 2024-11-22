@@ -1,5 +1,6 @@
 import { ua2str } from './utils'
 import { I_epub_meta, I_epub_files, I_manifest } from './types'
+import { join_path } from './parse/path'
 
 export
 const verify_mimetype = (files: I_epub_files) =>
@@ -13,5 +14,7 @@ const verify_spine_in_manifest = (meta: I_epub_meta) =>
   )
 
 export
-const make_url_by_id = (id: string, manifest: I_manifest) =>
-  manifest.find(item => item.id === id)!.href
+const make_url_by_id = (id: string, manifest: I_manifest, base_url?: string) => {
+  const href = manifest.find(item => item.id === id)!.href
+  return base_url ? join_path(base_url, href) : href
+}

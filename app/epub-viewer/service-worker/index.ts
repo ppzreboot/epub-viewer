@@ -14,7 +14,8 @@ self.addEventListener('message', message => {
   }
 })
 
-self.addEventListener('fetch', evt => {
+// @ts-ignore
+self.addEventListener('fetch', (evt: FetchEvent) => {
   const url = new URL(evt.request.url)
   for (const base_url of epubs.keys())
     if (url.pathname.startsWith(base_url)) {

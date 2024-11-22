@@ -4,13 +4,13 @@ import { Q } from './common'
 import { retrieve_file } from './retrieve'
 
 if ('serviceWorker' in navigator) {
-  const reg = await navigator.serviceWorker.register('./sw.js') // sw.js 在 /public/sw.js
+  const reg = await navigator.serviceWorker.register('./script/service-worker/index.js') // sw.js 在 /public/sw.js
   if (reg.active)
     Viewer(
-      Q('app'),
+      Q('app') as HTMLDivElement,
       (
         await retrieve_file()
       ) ?? await Home(),
     )
 } else
-  alert('Your environment dont support')
+  alert('Your environment dont support epub-viewer')

@@ -1,25 +1,26 @@
 // @ts-check
 import { build, analyzeMetafile, context } from 'esbuild'
 
+// @ts-ignore
 const is_dev = process.argv[2] === 'dev'
 
 if (is_dev) {
   const ctx = await context({
-    entryPoints: ['main.ts'],
+    entryPoints: ['main/index.ts', 'service-worker/index.ts'],
     bundle: true,
-    outfile: 'public/dist/main.js',
+    outdir: 'asset/script',
     logLevel: 'debug',
     format: 'esm',
   })
   await ctx.watch()
   await ctx.serve({
-    servedir: 'public',
+    servedir: 'asset',
   })
 } else {
   const res = await build({
-    entryPoints: ['main.ts'],
+    entryPoints: ['main/index.ts', 'service-worker/index.ts'],
     bundle: true,
-    outfile: 'public/dist/main.js',
+    outdir: 'asset/script',
     logLevel: 'debug',
     format: 'esm',
 

@@ -1,8 +1,8 @@
 # epub viewer
 
 ## Packages
-+ app [epub viewer](./app)
-+ lib [epub-utils](./lib/epub-utils/)
++ `app` [epub viewer](./app)
++ `lib` [epub-utils](./lib/epub-utils/)
 
 ## 推荐语
 `.epub` 文件就是一堆 `.html`、`.css`、image 文件经过 zip 压缩而成的。

@@ -3,5 +3,5 @@
 ## DEV
 At the root of this workspace:
 ```
-npm run -w app dev
+npm run -w app/epub-viewer dev
 ```

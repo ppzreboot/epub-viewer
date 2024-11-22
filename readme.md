@@ -1,7 +1,7 @@
 # epub viewer
 
 ## Packages
-+ `app` [epub viewer](./app)
++ `app` [epub viewer](./app/epub-viewer/)
 + `lib` [epub-utils](./lib/epub-utils/)
 
 ## 推荐语

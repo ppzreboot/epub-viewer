@@ -1,7 +1,7 @@
 {
   "type": "module",
   "workspaces": [
-    "app",
+    "app/epub-viewer",
     "lib/epub-utils"
   ],
   "devDependencies": {

@@ -1,13 +1,16 @@
+import { ua2str } from 'epub-utils'
+import { EpubManager } from './files'
+
 console.log('installing service worker')
 
-const epubs = new Map()
+const manager = new EpubManager()
 
 self.addEventListener('message', message => {
   const data = message.data
   switch(data.type) {
     case 'new epub':
       console.log('adding new epub', data.base_url)
-      epubs.set(data.base_url, data.files)
+      manager.add(data.base_url, data.files)
       break
     default:
       throw Error('unrecognized service worker message')
@@ -17,22 +20,20 @@ self.addEventListener('message', message => {
 // @ts-ignore
 self.addEventListener('fetch', (evt: FetchEvent) => {
   const url = new URL(evt.request.url)
-  for (const base_url of epubs.keys())
-    if (url.pathname.startsWith(base_url)) {
-      const requested = epubs.get(base_url)
-      console.log({ requested })
-      const resource = url.pathname.slice(base_url.length + 1)
-      console.log('catch epub request', {
-        pathname: url.pathname,
-        resource,
-      })
+  const file = manager.get_epub_file(url)
+  if (!file) return
 
-      console.log('requested string', new TextDecoder().decode(requested[resource]))
+  console.log('intercepting http request', evt.request.url)
+  switch (file.type) {
+    case 'html':
       return evt.respondWith(
-        new Response(
-          new TextDecoder().decode(requested[resource])
-        )
+        new Response(ua2str(file.ua), {
+          headers: { 'Content-Type': 'text/html' }
+        })
       )
-    }
-  console.log('unintercepted request', url)
+    default:
+      return evt.respondWith(
+        new Response(new Blob([file.ua]))
+      )
+  }
 })

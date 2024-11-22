@@ -6,9 +6,18 @@ const is_dev = process.argv[2] === 'dev'
 
 if (is_dev) {
   const ctx = await context({
-    entryPoints: ['main/index.ts', 'service-worker/index.ts'],
+    entryPoints: [
+      {
+        in: 'main/index.ts',
+        out: 'main',
+      },
+      {
+        in: 'service-worker/index.ts',
+        out: 'sw'
+      }
+    ],
+    outdir: 'asset',
     bundle: true,
-    outdir: 'asset/script',
     logLevel: 'debug',
     format: 'esm',
   })
@@ -18,9 +27,18 @@ if (is_dev) {
   })
 } else {
   const res = await build({
-    entryPoints: ['main/index.ts', 'service-worker/index.ts'],
+    entryPoints: [
+      {
+        in: 'main/index.ts',
+        out: 'main',
+      },
+      {
+        in: 'service-worker/index.ts',
+        out: 'sw'
+      }
+    ],
+    outdir: 'asset',
     bundle: true,
-    outdir: 'asset/script',
     logLevel: 'debug',
     format: 'esm',
 

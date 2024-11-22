@@ -17,7 +17,7 @@ function Viewer(container: HTMLDivElement, files: Unzipped) {
     
     iframe.src = make_url_by_id(epub.meta.spine[0], epub.meta.manifest, base_url)
     container.appendChild(iframe)
-  }, 2000)
+  }, 50)
 }
 
 const make_base_url = () => {

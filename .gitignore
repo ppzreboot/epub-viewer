@@ -1,4 +1,4 @@
 node_modules
-**/asset/script
+**/asset/*.js
 package-lock.json
 .DS_store

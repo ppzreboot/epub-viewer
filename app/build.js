@@ -13,7 +13,7 @@ if (is_dev) {
   })
   await ctx.watch()
   await ctx.serve({
-    servedir: 'public'
+    servedir: 'public',
   })
 } else {
   const res = await build({

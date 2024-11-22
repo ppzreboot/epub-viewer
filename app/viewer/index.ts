@@ -8,14 +8,16 @@ function Viewer(container: HTMLDivElement, files: Unzipped) {
 
   navigator.serviceWorker.controller!.postMessage({
     type: 'new epub',
-    files,
     base_url,
+    files,
   })
 
-  const iframe = document.createElement('iframe')
-  
-  iframe.src = make_url_by_id(epub.meta.spine[0], epub.meta.manifest, base_url)
-  container.appendChild(iframe)
+  setTimeout(() => {
+    const iframe = document.createElement('iframe')
+    
+    iframe.src = make_url_by_id(epub.meta.spine[0], epub.meta.manifest, base_url)
+    container.appendChild(iframe)
+  }, 2000)
 }
 
 const make_base_url = () => {

@@ -1,9 +1,5 @@
 {
   "type": "module",
-  "scripts": {
-    "dev": "node ./build.js dev",
-    "pro": "node ./build.js"
-  },
   "workspaces": [
     "app",
     "lib/epub-utils"

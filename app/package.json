@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "node build.js dev",
+    "pro": "node build.js"
+  }
+}

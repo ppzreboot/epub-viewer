@@ -1,4 +1,9 @@
 # epub viewer
+
+## Packages
++ app [epub viewer](./app)
++ lib [epub-utils](./lib/epub-utils/)
+
 ## 推荐语
 `.epub` 文件就是一堆 `.html`、`.css`、image 文件经过 zip 压缩而成的。
 所以，用浏览器查看 epub 电子书有天然的优势。
